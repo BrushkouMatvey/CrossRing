@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e23d9259e3d67b64bb096b3b8dff07a1, type: 3}
+  m_Name: GameSetup
+  m_EditorClassIdentifier: 
+  ballPrefab: {fileID: 6308838226150516876, guid: eaa35340ae8b39242a57f0f99fbae998,
+    type: 3}
+  RingPrefab: {fileID: 1999886187444259203, guid: 0b8956d13ac84654cb553885a2d7b22c,
+    type: 3}
+  camera: {fileID: 0}
+  scorePrefab: {fileID: 998582972043096731, guid: ae6bf28b83d91d64e82b349a0603dbab,
+    type: 3}
