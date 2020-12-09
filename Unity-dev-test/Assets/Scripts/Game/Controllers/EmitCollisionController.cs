@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Entitas.Unity;
+﻿using Entitas.Unity;
 using UnityEngine;
-using Entitas;
 
-public class EmitCollisionComponent : MonoBehaviour
+public class EmitCollisionController : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D other)
     {
