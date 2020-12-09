@@ -10,19 +10,22 @@ public static class InputComponentsLookup {
 
     public const int Globals = 0;
     public const int HoldingClick = 1;
-    public const int MousePosition = 2;
+    public const int Mouse = 2;
+    public const int MousePosition = 3;
 
-    public const int TotalComponents = 3;
+    public const int TotalComponents = 4;
 
     public static readonly string[] componentNames = {
         "Globals",
         "HoldingClick",
+        "Mouse",
         "MousePosition"
     };
 
     public static readonly System.Type[] componentTypes = {
         typeof(GlobalsComponent),
         typeof(HoldingClickComponent),
+        typeof(MouseComponent),
         typeof(MousePositionComponent)
     };
 }

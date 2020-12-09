@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class AddMoveSystem : ReactiveSystem<GameEntity> {
     private Contexts _contexts;
+    private IGroup<GameEntity> ringGroup;
 
 	public AddMoveSystem (Contexts contexts) : base(contexts.game) {
         _contexts = contexts;
+        ringGroup = _contexts.game.GetGroup(GameMatcher.Ring);
 	}
 
 	protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context) {
@@ -21,7 +23,7 @@ public class AddMoveSystem : ReactiveSystem<GameEntity> {
 
 	protected override void Execute(List<GameEntity> entities)
 	{
-		var ring = _contexts.game.GetGroup(GameMatcher.Ring).GetEntities().First();
+		var ring = ringGroup.GetEntities().First();
 		foreach (var ball in entities) {
 			var direction =  ring.position.value - ball.position.value;
 			direction.Normalize();

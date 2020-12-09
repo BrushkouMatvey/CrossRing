@@ -6,11 +6,9 @@ using UnityEngine;
 public class SpawnBallSystem : IExecuteSystem  {
 	private Contexts _contexts;  
 	private List<Vector2> spawnCoordinates;
-	private GameEntity timer;
-	private GameEntity ring;
-	private int score;
-
-    public SpawnBallSystem(Contexts contexts) {
+	private GameEntity _timer;
+	private int _score;
+	public SpawnBallSystem(Contexts contexts) {
     	_contexts = contexts;
         Camera camera = Camera.main;
         Vector2 screenTopRight = camera.ViewportToWorldPoint(new Vector3(1, 1, camera.nearClipPlane));
@@ -31,32 +29,36 @@ public class SpawnBallSystem : IExecuteSystem  {
 
 	public void Execute()
 	{
-		timer = _contexts.game.GetGroup(GameMatcher.Timer).GetEntities().First();
-		ring = _contexts.game.GetGroup(GameMatcher.Ring).GetEntities().First();
-		score = _contexts.game.GetGroup(GameMatcher.Score).GetEntities().First().score.value;
-		if (timer.isTimerState == false)
+		if (_contexts.game.GetGroup(GameMatcher.Timer).GetEntities().Length != 0 &&
+		    _contexts.game.GetGroup(GameMatcher.Score).GetEntities().Length != 0)
 		{
-			var ballEntity = _contexts.game.CreateEntity();
-			ballEntity.isBall = true;
-	
-			var random = new System.Random();
-			var ballStartPosition = spawnCoordinates[random.Next(spawnCoordinates.Count)];
-			ballEntity.AddPosition(ballStartPosition);
-			ballEntity.ReplaceResource(_contexts.game.globals.value.ballPrefab);
+			_timer = _contexts.game.GetGroup(GameMatcher.Timer).GetEntities().First();
+			_score = _contexts.game.GetGroup(GameMatcher.Score).GetEntities().First().score.value;
+			if (_timer.isTimerState == false)
+			{
+				var ballEntity = _contexts.game.CreateEntity();
+				ballEntity.isBall = true;
 
-			float timerValue;
-			if (score > 25)
-			{
-				timerValue = 0.5f;
-				timer.ReplaceTimer(timerValue);
+				var random = new System.Random();
+				var ballStartPosition = spawnCoordinates[random.Next(spawnCoordinates.Count)];
+				ballEntity.AddPosition(ballStartPosition);
+				ballEntity.ReplaceResource(_contexts.game.globals.value.ballPrefab);
+
+				float timerValue;
+				if (_score > 25)
+				{
+					timerValue = 0.5f;
+					_timer.ReplaceTimer(timerValue);
+				}
+				else
+				{
+					int dif = _score / 5;
+					timerValue = 1.6f - (float) (dif * 0.2);
+					_timer.ReplaceTimer(timerValue);
+				}
+				_timer.isTimerState = true;
 			}
-			else
-			{
-				int dif = score / 5;
-				timerValue = 1.5f - (float) (dif * 0.2);
-				timer.ReplaceTimer(timerValue);
-			}
-			timer.isTimerState = true;
 		}
+		
 	}
 }

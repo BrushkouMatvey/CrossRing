@@ -27,9 +27,9 @@ public class View : MonoBehaviour, IViewController
         gameObject.Link(_entity);
     }
 
-    public void DestroyView() {
+    public void DestroyView() 
+    {
         gameObject.Unlink();
         Destroy(gameObject);
     }
-
 }

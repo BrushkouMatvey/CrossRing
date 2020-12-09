@@ -14,10 +14,6 @@ public class InitLevelSystem : IInitializeSystem  {
 		var spawnBallTimerEntitty = _contexts.game.CreateEntity();
 		spawnBallTimerEntitty.AddTimer(2);
 		spawnBallTimerEntitty.isTimerState = true;
-		//
-		// var scoreEntity = _contexts.game.CreateEntity();
-		// scoreEntity.AddResource(_contexts.game.globals.value.scorePrefab);
-		// scoreEntity.AddScore(0);
 	}
 	private void spawnRing()
 	{

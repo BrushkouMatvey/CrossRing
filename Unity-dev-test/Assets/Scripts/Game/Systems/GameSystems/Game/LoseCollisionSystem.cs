@@ -27,17 +27,11 @@ public class LoseCollisionSystem : ReactiveSystem<GameEntity> {
 			var first= e.collision.first;
 			var second = e.collision.second;
 			first.isDestroy = true;
-			//_contexts.game.DestroyAllEntities();
-			//Clear();
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-		}
-	}
-
-	public void Clear()
-	{
-		foreach (var enGame in _contexts.input.GetGroup(InputMatcher.Globals))
-		{
-			enGame.Destroy();
+			PlayerPrefs.SetInt("Score", _contexts.game.GetGroup(GameMatcher.Score).GetEntities().First().score.value);
+			PlayerPrefs.Save();
+			Debug.Log(PlayerPrefs.GetInt("Score"));
+			var loseFlagEntity = _contexts.game.CreateEntity();
+			loseFlagEntity.isLoseAction = true;
 		}
 	}
 }

@@ -15,22 +15,23 @@ public static class GameComponentsLookup {
     public const int DestroyListener = 4;
     public const int Globals = 5;
     public const int HitCollisionFlag = 6;
-    public const int Move = 7;
-    public const int MoveListener = 8;
-    public const int Position = 9;
-    public const int PositionListener = 10;
-    public const int Resource = 11;
-    public const int Ring = 12;
-    public const int Rotation = 13;
-    public const int RotationListener = 14;
-    public const int Score = 15;
-    public const int ScoreListener = 16;
-    public const int Timer = 17;
-    public const int TimerState = 18;
-    public const int ViewController = 19;
-    public const int ViewService = 20;
+    public const int LoseAction = 7;
+    public const int Move = 8;
+    public const int MoveListener = 9;
+    public const int Position = 10;
+    public const int PositionListener = 11;
+    public const int Resource = 12;
+    public const int Ring = 13;
+    public const int Rotation = 14;
+    public const int RotationListener = 15;
+    public const int Score = 16;
+    public const int ScoreListener = 17;
+    public const int Timer = 18;
+    public const int TimerState = 19;
+    public const int ViewController = 20;
+    public const int ViewService = 21;
 
-    public const int TotalComponents = 21;
+    public const int TotalComponents = 22;
 
     public static readonly string[] componentNames = {
         "Ball",
@@ -40,6 +41,7 @@ public static class GameComponentsLookup {
         "DestroyListener",
         "Globals",
         "HitCollisionFlag",
+        "LoseAction",
         "Move",
         "MoveListener",
         "Position",
@@ -64,6 +66,7 @@ public static class GameComponentsLookup {
         typeof(DestroyListenerComponent),
         typeof(GlobalsComponent),
         typeof(HitCollisionFlagComponent),
+        typeof(LoseActionComponent),
         typeof(MoveComponent),
         typeof(MoveListenerComponent),
         typeof(PositionComponent),
